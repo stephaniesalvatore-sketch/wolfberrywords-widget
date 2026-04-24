@@ -1,6 +1,3 @@
-// Variables used by Scriptable.
-// These must be at the very top of the file. Do not edit.
-// icon-color: gray; icon-glyph: magic;
 // WolfberryWords - Word of the Day Widget
 // by @WolfberryWords
 // Install via Scriptable (free on App Store)
@@ -9,76 +6,11 @@
 // 1. Download Scriptable from the App Store (free)
 // 2. Open Scriptable, tap + and paste this entire script
 // 3. Name it WolfberryWords
-// 4. Long-press your home screen, tap +, search Scriptable, add widget
-// 5. Choose Medium size and select WolfberryWords
-//
-// ADD YOUR OWN WORDS:
-// Scroll down to the WORD BANK section and add entries
-// following the same format. One new word shows per day.
+// 4. Long-press your home screen, tap Edit, tap Add Widget
+// 5. Search Scriptable, choose Medium size, select WolfberryWords
 
-// WORD BANK
-
-const WORDS = [
-  { word: "Vellichor", phonetic: "/ VEL-i-kor /", pos: "noun", definition: "The strange wistfulness of used bookshops." },
-  { word: "Scripturient", phonetic: "/ skrip-TYOOR-ee-ent /", pos: "adjective", definition: "Possessed by a violent desire to write." },
-  { word: "Susurrus", phonetic: "/ suh-SUR-uhs /", pos: "noun", definition: "A whispering or rustling sound." },
-  { word: "Tenebrous", phonetic: "/ ten-UH-brus /", pos: "adjective", definition: "Dark, shadowy, and obscure." },
-  { word: "Lacuna", phonetic: "/ luh-KYOO-nuh /", pos: "noun", definition: "A missing portion, especially in a manuscript or text." },
-  { word: "Sempiternal", phonetic: "/ SEM-pi-TER-nl /", pos: "adjective", definition: "Eternal and unchanging; everlasting." },
-  { word: "Ineffable", phonetic: "/ in-EF-uh-bul /", pos: "adjective", definition: "Too great or extreme to be expressed in words." },
-  { word: "Hiraeth", phonetic: "/ HEER-eyeth /", pos: "noun", definition: "A longing for a home that is lost, or that never was." },
-  { word: "Bibliobibuli", phonetic: "/ BIB-lee-oh-BIB-yoo-lee /", pos: "noun", definition: "People who read so much they are oblivious to the real world." },
-  { word: "Tmesis", phonetic: "/ tuh-MEE-sis /", pos: "noun", definition: "The insertion of a word into the middle of another for emphasis." },
-  { word: "Somnolent", phonetic: "/  SAAM-nuh-lent /", pos: "adjective", definition: "Sleepy; causing or suggesting drowsiness." },
-  { word: "Apocryphal", phonetic: "/ uh-POK-ruh-ful /", pos: "adjective", definition: "Of doubtful authenticity, yet widely believed to be true." },
-  { word: "Kenopsia", phonetic: "/ keh-NOP-see-uh /", pos: "noun", definition: "The eerie quiet of a place that's usually busy." },
-  { word: "Saudade", phonetic: "/ saw-DAH-duh /", pos: "noun", definition: "A longing for something beloved or absent." },
-  { word: "Snollygoster", phonetic: "/ SNAHL-ee-gahs-ter /", pos: "noun", definition: "A shrewd, unprincipled person, especially a politician." },
-  { word: "Brumous", phonetic: "/ BROO-muhs /", pos: "adjective", definition: "Foggy, wintry, misty" },
-  { word: "Expurgate", phonetic: "/ EKS-puhr-gayt /", pos: "verb", definition: "Remove material considered to be objectionable" },
-  { word: "Parlance", phonetic: "/ PAR-lents /", pos: "noun", definition: "A way or manner of speaking, jargon" },
-  { word: "Inveigle", phonetic: "/ in-VAY-guhl /", pos: "verb", definition: "Cajole through deception or flattery" },
-  { word: "Prevaricate", phonetic: "/ pree-VARuh-kayt /", pos: "verb", definition: "To speak or act in an ambiguous way" },
-  { word: "Scupper", phonetic: "/ SKUHP-er /", pos: "noun", definition: "An opening in the bulward of ship allowing water to drain to sea" },
-  { word: "Crepuscular", phonetic: "/ kri-PUH-skyuh-ler /", pos: "adjective", definition: "Occurring at or resembling twilight" },
-  { word: "Subluxate", phonetic: "/ SUB-luhks-ayt /", pos: "adjective", definition: "Partially dislocated bone or joint" },
-  { word: "Soporific", phonetic: "/ SOP-uh-rif-ik /", pos: "adjective", definition: "Dull, monotonous, sleep-inducing" },
-  { word: "Satori", phonetic: "/ suh-TOR-ee /", pos: "noun", definition: "Sudden enlightenment or awakening" },
-  { word: "Panoply", phonetic: "/ PAN-uh-plee /", pos: "noun", definition: "Complete set of armor or magnificent collection of items" },
-  { word: "Halcyon", phonetic: "/ HAL-see-uhn /", pos: "adjective", definition: "Calm, serene, tranquil" },
-  { word: "Prattle", phonetic: "/ PRA-tuhl /", pos: "verb", definition: "To speak in a foolish manner" },
-  { word: "Nettle", phonetic: "/ NET-uhl /", pos: "verb", definition: "To annoy or irritate" },
-  { word: "Sward", phonetic: "/ swôrd /", pos: "noun", definition: "An expanse of short grass" },
-  { word: "Truculent", phonetic: "/ TRUH-kyuh-lent /", pos: "adjective", definition: "Eager to argue; defiant" },
-  { word: "Insouciance", phonetic: "/ in-SOO-see-uhnts /", pos: "noun", definition: "Casual lack of concern" },
-  { word: "Ennui", phonetic: "/ AHN-wee /", pos: "noun", definition: "Boredom, lack of excitement" },
-  { word: "Alacrity", phonetic: "/ uh-LA-kruh-dee/", pos: "noun", definition: "Cheerful readiness" },
-  { word: "Inimitable", phonetic: "/ i-NIMuh-duh-buhl /", pos: "adjective", definition: "Unique, unable to be copied" },
-  { word: "Tête-à-tête", phonetic: "/ TAY-duh-TAT /", pos: "noun", definition: "Private conversation between two people" },
-  { word: "Remonstrance", phonetic: "/ ri-MAHN-struhnts /", pos: "noun", definition: "Expression of earnest opposition" },
-  { word: "Impropitious", phonetic: "/ im-pro-PI-shuhs /", pos: "adjective", definition: "Unfavorable" },
-  { word: "Sotto Voce", phonetic: "/ SAH-tow-VO-chay /", pos: "adjective", definition: "Intentionally lowering volume of voice" },
-  { word: "Anagnorisis", phonetic: "/ anag-NAWR-uh-sis /", pos: "noun", definition: "Point in story where character makes critical discovery" },
-  { word: "Opprobrium", phonetic: "/ uh-PRO-bree-uhm /", pos: "noun", definition: "Harsh criticism or something that brings disgrace" },
-  { word: "Vicissitude", phonetic: "/ vuh-SI-suh-tood /", pos: "noun", definition: "Alternating conditions or change in circumstances" },
-  { word: "Profligate", phonetic: "/ PRAH-fluh-guht /", pos: "adjective", definition: "Wildly extravagant" },
-  { word: "Terra Incognita", phonetic: "/TARuh-in-kahg-NEE-duh /", pos: "noun", definition: "Unknown land" },
-  { word: "Atrabilious", phonetic: "/ A-truh-BIL-yuhs /", pos: "adjective", definition: "Gloomy, ill-natured" },
-  { word: "Flagon", phonetic: "/ FLA-guhn /", pos: "noun", definition: "Large ceramic or metal vessel containing wine" },
-  { word: "Sillage", phonetic: "/ SI-luhj /", pos: "noun", definition: "Lingering scent after someone passes" },
-  { word: "Apricity", phonetic: "/ ah-PRISS-idee /", pos: "noun", definition: "Soft warmth of the sun in winter" },
-  { word: "Frondescence", phonetic: "/ frahn-DES-ents /", pos: "noun", definition: "Period and process where a plant unfolds its leaves" },
-  { word: "Exegesis", phonetic: "/ ek-suh-JEE-suhs /", pos: "noun", definition: "Critical explanation or interpretation of a text" },
-  { word: "Coppice", phonetic: "/ KAH-pis /", pos: "verb", definition: "Cutting trees during dormancy to promote growth" },
-  { word: "Treacle", phonetic: "/ TREEK-uhl /", pos: "noun", definition: "Flattery | Thick dark syrup made of refined sugar" },
-  { word: "Defenestrate", phonetic: "/ dee-FENuh-strayt /", pos: "verb", definition: "Dismiss from authority | Throw someone out window" },
-  { word: "Solivagant", phonetic: "/ soh-LIH-vuh-guhnt /", pos: "noun", definition: "To wander alone" },
-  { word: "Fugacious", phonetic: "/ fyoo-GA-shuhs /", pos: "adjective", definition: "Fleeting, tending to disappear" },
-  { word: "Dearth", phonetic: "/ derTH /", pos: "noun", definition: "A scarcity or inadequate supply" },
-  { word: "Peregrination", phonetic: "/ PARuh-grih-nay-SHuhn /", pos: "noun", definition: "A long, meandering journey" },
-  { word: "Sesquipedalian", phonetic: "/ SESkwuh-puh-DAYL-yuhn /", pos: "adjective", definition: "Long winded, polysyllabic" },
-  { word: "Efflation", phonetic: "/ ee-FLAY-shuhn /", pos: "noun", definition: "A blowing, breathing or puffing out" },
-];
+// YOUR SERVER URL - update this after Netlify deployment
+const API_URL = "https://cheerful-hummingbird-cb5c1a.netlify.app/.netlify/functions/word";
 
 // THEME - change to: original, forest, blood, charcoal, evergreen, black, ivory
 const THEME = "original";
@@ -95,12 +27,28 @@ const THEMES = {
 
 const C = THEMES[THEME] || THEMES.original;
 
-// Pick today's word - counts days since launch date so all words cycle correctly
-// regardless of how many words are in the list (works beyond 365 words)
-const LAUNCH_DATE = new Date(2026, 3, 22); // April 22 2026 - change if needed
-const today = new Date();
-const daysSinceLaunch = Math.floor((today - LAUNCH_DATE) / (1000 * 60 * 60 * 24));
-const entry = WORDS[daysSinceLaunch % WORDS.length];
+// Fetch today's word from server
+let entry = {
+  word: "WolfberryWords",
+  phonetic: "/ loading /",
+  pos: "noun",
+  definition: "A glossary in progress."
+};
+
+try {
+  const req = new Request(API_URL);
+  req.timeoutInterval = 10;
+  const data = await req.loadJSON();
+  if (data && data.word) entry = data;
+} catch(e) {
+  // If offline or error, show fallback message
+  entry = {
+    word: "Offline",
+    phonetic: "/ of-LINE /",
+    pos: "noun",
+    definition: "Connect to the internet to load today's word."
+  };
+}
 
 // Build widget
 const widget = new ListWidget();
